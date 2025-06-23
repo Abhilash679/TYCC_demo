@@ -69,3 +69,20 @@ CREATE TABLE IF NOT EXISTS payments (
     FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
 SELECT * FROM payments;
+
+CREATE TABLE IF NOT EXISTS restaurant_tables (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    table_number VARCHAR(10) NOT NULL,
+    status ENUM('Available', 'Occupied') DEFAULT 'Available'
+);
+SELECT * FROM restaurant_tables;
+
+CREATE TABLE IF NOT EXISTS payments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    method ENUM('Cash', 'UPI', 'Card') NOT NULL,
+    amount FLOAT NOT NULL,
+    paid_on DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
+SELECT * FROM payments;
