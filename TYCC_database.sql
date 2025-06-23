@@ -45,3 +45,11 @@ CREATE TABLE IF NOT EXISTS inventory_movements (
 );
 SELECT * FROM inventory_movements;
 
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    role VARCHAR(50) NOT NULL CHECK (role IN ('Admin', 'Waiter', 'Cashier', 'InventoryManager'))
+);
+
